@@ -1,12 +1,18 @@
 var expect = require('expect.js');
 
+var Sequelize = require('sequelize');
+var sequelize = new Sequelize('postgres://booking:secret@localhost/booking_test');
+
 describe('worker service', function() {
 
   var newWorker = { displayName: 'Chamath', designation: 'ATL' };
   var service;
 
-  beforeEach(function() {
-    service = require('../../server/workerService.js');
+  beforeEach(function(done) {
+    service = require('../../server/workerService.js')(sequelize);
+    sequelize.sync({force: true}).success(function() {
+      done();
+    });
   });
 
   it('starts out without new worker', function(done) {
@@ -26,7 +32,7 @@ describe('worker service', function() {
         var req = {};
         var res = {
           send: function(data) {
-            expect(data).to.contain(newWorker);
+            expect(data).to.eql([newWorker]);
             done();
           }
         };
