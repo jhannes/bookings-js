@@ -22,4 +22,52 @@ describe('worker controller', function() {
     expect(scope.workers).to.contain(worker1);
   });
 
+  it('has a template for a new worker', function() {
+    expect(scope.newWorker).to.eql({ displayName: '', designation: '' });
+  });
+
+  describe('adding new workers', function() {
+    var newWorker = { displayName: 'Chamath', designation: 'ATL' };
+
+    beforeEach(function() {
+      http.expectPOST('/api/workers', newWorker).respond(201);
+      http.expectGET('/api/workers').respond([newWorker])
+      scope.newWorker = newWorker;
+    });
+
+    it('saves new workers', function() {
+      scope.create();
+      http.flush();
+    });
+
+    it('refreshes workers on save', function() {
+      scope.create();
+      http.flush();
+      expect(scope.workers).to.contain(newWorker);
+    });
+
+    it('clears newWorker on save', function() {
+      scope.create();
+      http.flush();
+      expect(scope.newWorker).to.eql({ displayName: '', designation: '' });
+    });
+  })
+
+  describe('error during add', function() {
+    var newWorker = { displayName: 'Chamath', designation: 'ATL' };
+
+    beforeEach(function() {
+      scope.newWorker = newWorker;
+    });
+
+    it('saves new workers', function() {
+      http.expectPOST('/api/workers', newWorker).respond(400);
+      scope.create();
+      http.flush();
+      expect(scope.newWorker).to.eql(newWorker);
+    });
+  })
+
+
+
 });

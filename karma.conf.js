@@ -15,6 +15,8 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+      'public/lib/jquery/dist/jquery.js',
+      'public/lib/toastr/toastr.js',
       'public/lib/angular/angular.js',
       'public/lib/angular-mocks/angular-mocks.js',
       'public/scripts/*.js',
