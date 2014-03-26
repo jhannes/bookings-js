@@ -1,0 +1,66 @@
+npm install -g karma karma-cli bower nodemon mocha
+
+mkdir booking-js
+cd booking-js
+npm init
+bower init
+karma init
+git init
+git add README.md package.json
+git add .bowerrc bower.json karma.conf.js
+git commit -m "Project structure and documentation"
+
+bower install --save angular-mocks angular
+npm install --save-dev karma-mocha karma-chai karma-growl-reporter
+start karma start
+git add .gitignore public/scripts/app.js specs/workerCtrl.spec.js
+git add bower.json karma.conf.js package.json
+git commit -m "First passing test"
+
+npm install --save express
+bower install --save bootstrap
+start nodemon server/index.js
+git add public/index.html public/style/app.css server/index.js
+git add bower.json package.json
+git commit -m "Added front page with WorkerCtrl"
+
+bower install --save toastr
+git add bower.json karma.conf.js public/scripts/app.js specs/client/workerCtrl.spec.js
+git commit -m "Tests for saving"
+
+git add public/index.html
+git commit -m "Integrated WorkerCtrl save with view"
+
+git add server/index.js
+git commit -m "Added server services"
+
+git add server/service.js server/workerService.js
+git add server/index.js
+git commit -m "Moved worker service into separate file"
+
+npm install --save-dev expect.js
+mocha
+git add specs/server/workerService.spec.js test/mocha.opts
+git add package.json
+git commit -m "Added server side test"
+
+npm install --save sequelize pg
+npm install --save underscore
+echo create user booking with password 'secret' | psql -U postgres
+echo create database booking_test | psql -U postgres
+echo grant all privileges on database booking_test to booking | psql -U postgres
+mocha
+echo create database booking_dev | psql -U postgres
+echo grant all privileges on database booking_dev to booking | psql -U postgres
+git add package.json
+git add server\index.js server\workerService.js specs\server\workerService.spec.js
+git commit -m "Using database for workerService"
+
+npm install --save-dev bower
+git add package.json
+git commit -m "Added deployment scripts"
+
+heroku create
+heroku addons:add heroku-postgresql:dev
+git push heroku master
+heroku open
