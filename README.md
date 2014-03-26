@@ -34,8 +34,9 @@ Deploying to Heroku:
    * Create a Heroku account
    * Install [Heroku toolbelt](https://toolbelt.heroku.com/)
 2. Create a new Heroku application: `heroku create`
-3. Push your code to Heroku: `git push heroku master`
-4. Visit the web site: `heroku open`
+3. Get a database for your app: `heroku addons:add heroku-postgresql:dev`
+4. Push your code to Heroku: `git push heroku master`
+5. Visit the web site: `heroku open`
 
 Extending the code:
 ===================
