@@ -1,7 +1,7 @@
 {
   "name": "booking-js",
   "version": "0.0.0",
-  "description": "Book workers for projects",
+  "description": "Book workers for projects - demo application",
   "main": "server/index.js",
   "scripts": {
     "test": "karma start",
