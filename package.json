@@ -19,5 +19,8 @@
     "chai": "~1.9.1",
     "karma": "~0.12.1",
     "karma-chai": "~0.1.0"
+  },
+  "dependencies": {
+    "express": "~3.5.1"
   }
 }
