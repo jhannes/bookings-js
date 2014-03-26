@@ -4,7 +4,9 @@
   "description": "Book workers for projects",
   "main": "server/index.js",
   "scripts": {
-    "test": "karma"
+    "test": "karma start",
+    "postinstall": "./node_modules/bower/bin/bower install",
+    "start": "node server/index.js"
   },
   "repository": {
     "type": "git",
@@ -19,7 +21,8 @@
     "chai": "~1.9.1",
     "karma": "~0.12.1",
     "karma-chai": "~0.1.0",
-    "expect.js": "~0.3.1"
+    "expect.js": "~0.3.1",
+    "bower": "~1.3.1"
   },
   "dependencies": {
     "express": "~3.5.1",
