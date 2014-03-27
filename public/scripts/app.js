@@ -15,7 +15,7 @@ app.controller('WorkerCtrl', function($scope, $http) {
       fetch();
       createNewWorker();
     }).error(function() {
-      toastr.error("Failed so save worker");
+      toastr.error("Failed to save worker");
     });
   };
 

@@ -18,13 +18,13 @@ Running the code:
 3. Install Bower dependencies: `bower install` (for web site dependencies)
 4. Start the test runner for client-side tests: `karma start`
 5. Create the database schema for the tests: (pgsql is in PostgreSQL install dir)
-   * `echo create user booking with password 'secret' | pgsql`
-   * `echo create database booking_test | pgsql`
-   * `echo grant all privileges on database booking_test to booking | pgsql`
-6. Start the test runner for server-side tests: `mocha --watch --growl server/spec`
+   * `echo create user booking with password 'secret' | psql -U postgres`
+   * `echo create database booking_test | psql -U postgres`
+   * `echo grant all privileges on database booking_test to booking | psql -U postgres`
+6. Start the test runner for server-side tests: `mocha`
 7. Create the database schema for the server:
-   * `echo create database booking_dev | pgsql`
-   * `echo grant all privileges on database booking_dev to booking | pgsql`
+   * `echo create database booking_dev | psql -U postgres`
+   * `echo grant all privileges on database booking_dev to booking | psql -U postgres`
 8. Start the server: `nodemon server/index.js`
 9. Open in a web browser: http://localhost:3000
 

@@ -60,7 +60,7 @@ describe('worker controller', function() {
       scope.newWorker = newWorker;
     });
 
-    it('saves new workers', function() {
+    it('keep the old worker', function() {
       http.expectPOST('/api/workers', newWorker).respond(400);
       scope.create();
       http.flush();
